@@ -1,0 +1,76 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+<a class="mb-8" href="{% url 'blog-home' %}"> < Back</a>
+<article class="media content-section mb-1">
+  <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+  <div class="media-body">
+    <div class="article-metadata">
+      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ object.author }}</a>
+      <small class="text-muted">{{ object.date_posted|date:"l, M j, Y" }}</small>
+      {% if object.author == user %}
+      <div>
+		    <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+		    <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+		  </div>
+      {% endif %}
+    </div>
+    <h2 class="article-title">{{ object.title }}</h2>
+    <p class="article-content">{{ object.content }}</p>
+    {% if object.image %}
+      <img src="{{ object.image.url }}">
+    {% endif %}
+  </div>
+</article>
+
+<div class="media-body mb-4">
+  <small class="text-muted">Tags: </small>
+</div>
+
+
+{% if user.is_authenticated %}
+  <form action="{% url 'tag' object.id %}" method='post'>
+    {% csrf_token %}
+    <input type = "text" name="tag" id="tag">
+    <div class='mb-4'>
+      <input type="submit" value="Tag">
+    </div>
+  </form>
+{% endif %}
+
+
+{% if user.is_authenticated %}
+  <form action="{% url 'comment' object.id %}" method='post'>
+    {% csrf_token %}
+    <textarea name="comment" rows="4" cols="64">Leave a comment!</textarea>
+    <br>
+    <div class='mb-4'>
+      <input type="submit" value="Comment">
+    </div>
+  </form>
+{% else %}
+  <a class="mb-4" href="{% url 'login' %}">Login</a> or <a class="mb-4" href="{% url 'register' %}">Register</a> to comment.
+{% endif %}
+
+
+{% if comments %}
+  {% for comment in comments %}
+  <article class="media content-section">
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ comment.author }}</a>
+        <small class="text-muted">{{ comment.date_posted|date:"m/d/y" }} at {{ comment.date_posted|date:"g:i a" }}</small>
+      </div>
+      <p class="article-content">{{ comment.content }}</p>
+    </div>
+  </article>
+  {% endfor %}
+{% else %}
+  No comments
+{% endif %}
+
+
+
+
+
+{% endblock content %}
