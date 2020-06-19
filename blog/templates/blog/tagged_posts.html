@@ -1,6 +1,6 @@
 {% extends "blog/base.html" %}
 {% block content %}
-	<h1 class="mb-3">Welcome to the blog</h1>
+	<h1 class="mb-3">#{{ view.kwargs.tag }}</h1>
 	{% for post in posts %}
 		<article class="media content-section">
 		  <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
@@ -11,25 +11,15 @@
 		    </div>
 		    <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
 		    <p class="article-content">{{ post.content }}</p>
-		    {% if post.image %}
-		      <img src="{{ post.image.url }}">
-		    {% endif %}
-		    <!-- Using the 'with' template tag with a foreignkey relationship appears to be bugged
-		    {% with total=post.commment_set.count %}
-		    	<small><a class="mt-2" href="{% url 'post-detail' post.id %}">{{ total }} comment{{ total|pluralize }}</a></small>
-		    {% endwith %}
-			-->
-			<small><a class="mt-2" href="{% url 'post-detail' post.id %}">
-			  {{ post.comment_set.count }} comment{{ post.comment_set.count|pluralize }}
-			</a></small>
-
-		    
 		  </div>
 		</article>
 	{% endfor %}
 
+
+
+
 	{% if is_paginated %}
-	<div class="mb-4">
+
 		{% if page_obj.has_previous %}
 			<a class="btn btn-outline-info mb4" href="?page=1">First</a>
 			<a class="btn btn-outline-info mb4" href="?page={{ page_obj.previous_page_number }}">Prev.</a>
@@ -47,7 +37,6 @@
 			<a class="btn btn-outline-info mb4" href="?page={{ page_obj.next_page_number }}">Next</a>
 			<a class="btn btn-outline-info mb4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
 		{% endif %}
-	</div>
 
 	{% endif %}
 {% endblock content %}

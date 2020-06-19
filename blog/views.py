@@ -34,6 +34,18 @@ class UserPostListView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return Post.objects.filter(author=user).order_by('-date_posted')
 
+
+class TaggedPostListView(ListView):
+	model = Post
+	template_name = 'blog/tagged_posts.html'
+	context_object_name = 'posts'
+	paginate_by = 6
+
+	def get_queryset(self):
+		tag = get_object_or_404(Tag, name=self.kwargs.get('tag'))
+		return tag.posts.all().order_by('-date_posted')
+
+
 @login_required
 def comment(request, post_id):
 	post = get_object_or_404(Post, pk=post_id)
@@ -47,7 +59,8 @@ def comment(request, post_id):
 @login_required
 def comment_delete(request, post_id, comment_id):
 	comment = get_object_or_404(Comment, pk=comment_id)
-	if self.request.user == comment.author:
+	post = get_object_or_404(Post, pk=post_id)
+	if request.user == comment.author or request.user == post.author:
 		comment.delete()
 
 	return HttpResponseRedirect(reverse('post-detail', args=(post_id,)))
@@ -72,6 +85,7 @@ class PostDetailView(DetailView):
 	def get_context_data(self, **kwargs):
 		context = super(PostDetailView, self).get_context_data(**kwargs)
 		context['comments'] = Comment.objects.filter(post=self.object).order_by('-date_posted')
+		context['tags'] = self.object.tag_set.all()
 		return context
 
 
