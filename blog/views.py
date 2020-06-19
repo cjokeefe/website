@@ -34,6 +34,18 @@ class UserPostListView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return Post.objects.filter(author=user).order_by('-date_posted')
 
+
+class TaggedPostListView(ListView):
+	model = Post
+	template_name = 'blog/tagged_posts.html'
+	context_object_name = 'posts'
+	paginate_by = 6
+
+	def get_queryset(self):
+		tag = get_object_or_404(Tag, name=self.kwargs.get('tag'))
+		return tag.posts.all().order_by('-date_posted')
+
+
 @login_required
 def comment(request, post_id):
 	post = get_object_or_404(Post, pk=post_id)
