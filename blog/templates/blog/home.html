@@ -14,7 +14,16 @@
 		    {% if post.image %}
 		      <img src="{{ post.image.url }}">
 		    {% endif %}
-		    <small><a class="mt-2" href="{% url 'post-detail' post.id %}">{{ post.comment_set.count }} comments</a></small>
+		    <!-- Using the 'with' template tag with a foreignkey relationship appears to be bugged
+		    {% with total=post.commment_set.count %}
+		    	<small><a class="mt-2" href="{% url 'post-detail' post.id %}">{{ total }} comment{{ total|pluralize }}</a></small>
+		    {% endwith %}
+			-->
+			<small><a class="mt-2" href="{% url 'post-detail' post.id %}">
+			  {{ post.comment_set.count }} comment{{ post.comment_set.count|pluralize }}
+			</a></small>
+
+		    
 		  </div>
 		</article>
 	{% endfor %}
