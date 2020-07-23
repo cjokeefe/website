@@ -8,6 +8,7 @@ from .views import (
 	UserPostListView,
     TaggedPostListView
 )
+from django.contrib.auth.decorators import permission_required
 from . import views
 
 urlpatterns = [
@@ -16,7 +17,7 @@ urlpatterns = [
     path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
-    path('post/new/', PostCreateView.as_view(), name='post-create'),
+    path('post/new/', permission_required('blog.add_post')(PostCreateView.as_view()), name='post-create'),
     path('post/<int:post_id>/comment/', views.comment, name='comment'),
     path('post/<int:post_id>/<int:comment_id>/delete/', views.comment_delete, name='comment-delete'),
     path('post/<int:post_id>/tag/', views.tag_create, name='tag'),

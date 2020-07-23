@@ -19,11 +19,12 @@
 		    	<small><a class="mt-2" href="{% url 'post-detail' post.id %}">{{ total }} comment{{ total|pluralize }}</a></small>
 		    {% endwith %}
 			-->
-			<small><a class="mt-2" href="{% url 'post-detail' post.id %}">
-			  {{ post.comment_set.count }} comment{{ post.comment_set.count|pluralize }}
-			</a></small>
+			<div>
+				<small class="text-left mt-2"><a href="{% url 'post-detail' post.id %}">
+				  {{ post.comment_set.count }} comment{{ post.comment_set.count|pluralize }}
+				</a></small>
+			</div>
 
-		    
 		  </div>
 		</article>
 	{% endfor %}
