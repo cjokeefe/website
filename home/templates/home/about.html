@@ -1,6 +1,48 @@
 {% extends "home/base.html" %}
 {% block content %}
 
-<h1 class="mb-3">Welcome to the about page</h1>
+<div class="col-md-8">
+
+	<h1 class="mb-3">About</h1>
+
+	<h2 class="ml-3">Education</h2>
+
+	<article class="media content-section ml-4">
+		<div class="media-body">
+			<h2 class="article-title mb-2">University of Massachusetts Amherst, 2019</h2>
+			<h5 class="article-title mb-2"> B.S. in Computer Science with a Minor in Mathematics</h5>
+			<ul>
+				<li>Member of Commonwealth Honors College</li>
+				<li>3.83 GPA</li>
+			</ul>
+			<!--
+			<h5 class="article-title mb-2"> Member of Commonwealth Honors College</h5>
+			<h5 class="article-title mb-2"> 3.83 GPA</h5>
+			-->
+		</div>
+	</article>
+
+	<h2 class="ml-3">Professional Work Experience</h2>
+
+	<article class="media content-section ml-4">
+		<div class="media-body">
+			<h2 class="article-title mb-2">Olympus Scientific Solutions Americas</h2>
+			<h5 class="article-title mb-2">R&D Intern</h5>
+			<ul>
+				<li>Developed a software tool to produce and visualize metrics relating to the product development process</li>
+				<li>Utilized RESTful services to aggregate project data from Jama database</li>
+				<li>Helped with various tasks within the Systems Engineering group including Python debugging, managing product requirement specifications, writing macros for use in MS Office</li>
+			</ul>
+		</div>
+	</article>
+
+</div>
+
+
+<style>
+	#aboutpage {
+		color: #fff;
+	}
+</style>
 
 {% endblock content %}

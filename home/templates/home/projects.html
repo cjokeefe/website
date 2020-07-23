@@ -1,6 +1,47 @@
 {% extends "home/base.html" %}
 {% block content %}
 
-<h1 class="mb-3">Welcome to the projects page</h1>
+<div class="col-md-8">
+
+	<h1 class="mb-3">Projects</h1>
+
+	<article class="media content-section">
+		<div class="media-body">
+			<h2 class="article-title mb-2">Spotify Custom Shuffle</h2>
+			<p class="article-content">I started this project due to my own dissatisfaction with Spotify's shuffle algorithm. In its current state, this is a simple Python script that re-orders the songs in the user's public playlist according to a set of parameters. It uses an algorithm that roughly distributes songs by an artist evenly throughout the playlist. For example, if a playlist contains 25 songs, 5 of which are by Pink Floyd, then for each "chunk" of 5 songs, 1 will be by Pink Floyd. The user can set chunk width, or number of chunks. Check it out on <a href="https://github.com/cjokeefe/CustomShuffle">GitHub</a>.
+
+			Technologies used:
+				<ul>
+					<li>Python</li>
+					<li><a href="https://spotipy.readthedocs.io/en/2.13.0/">Spotipy</a> (Python library for the Spotify Web API)</li>
+				</ul>
+			</p>
+		</div>
+	</article>
+
+
+	<article class="media content-section">
+		<div class="media-body">
+			<h2 class="article-title mb-2">Personal Website and Blog</h2>
+			<p class="article-content">The website you are currently viewing! I built this website using Django web framework for Python and hosted with Linode. It serves as a resume/portfolio and a place for me to make anything I want and share it online without the limitations of popular social media sites. This section of the website is mostly just static HTML pages, but the blog contains more in-depth functionality. Approved users (currently only myself) can create posts, attach images, and tag posts. Anybody can create a profile and leave comments if they wish. See more and view the source code on <a href="https://github.com/cjokeefe/website">GitHub</a>.
+
+			Technologies used:
+			<ul>
+				<li>Python</li>
+				<li><a href="https://www.djangoproject.com/">Django</a></li>
+				<li>HTML and CSS</li>
+			</ul>
+		</p>
+		</div>
+	</article>
+
+</div>
+
+
+<style>
+	#projectspage {
+		color: #fff;
+	}
+</style>
 
 {% endblock content %}

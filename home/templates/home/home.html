@@ -1,6 +1,33 @@
 {% extends "home/base.html" %}
 {% block content %}
 
-<h1 class="mb-3">Welcome to the home page</h1>
+<div class="col-md-8">
+
+	<h1 class="mb-3">Welcome!</h1>
+
+	<article class="media content-section">
+		<div class="media-body">
+			<p class="article-content">My name is Chris, and I am an aspiring software engineer currently based in Glendale, California. This is my personal website where you can find information about me, my projects, and even a blog where I share thoughts and ideas about my hobbies, my life, and anything else I find interesting or worth sharing. This is my little slice of the Internet, enjoy your stay.</p>
+		</div>
+	</article>
+
+
+	<h2 class="mb-3">Links</h2>
+	<ul>
+		<li><a href='https://www.linkedin.com/in/christopher-o-keefe-39131b169/'>LinkedIn</a></li>
+		<li><a href='https://github.com/cjokeefe'>GitHub</a></li>
+	</ul>
+
+</div>
+
+<div class="col-md-4">
+	<img src='../../../media/profile_pics/YfatG6S.jpg'>
+</div>
+
+<style>
+	#homepage {
+		color: #fff;
+	}
+</style>
 
 {% endblock content %}
