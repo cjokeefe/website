@@ -1,1 +1,4 @@
 *secret_key.txt
+*.log
+*.pyc
+db.sqlite3
