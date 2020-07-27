@@ -27,7 +27,7 @@
   <small class="text-muted">Tags: </small>
   {% if tags %}
     {% for tag in tags %}
-      <small class="text-muted"><a href="{% url 'tagged-posts' tag.name %}" >#{{ tag.name }} </small>
+      <small class="text-muted"><a href="{% url 'tagged-posts' tag.name %}" >#{{ tag.name }}</a></small>
     {% endfor %}
   {% endif %}
 </div>
