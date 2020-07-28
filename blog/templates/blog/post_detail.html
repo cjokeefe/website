@@ -47,8 +47,11 @@
 
 {% if user.is_authenticated %}
   <form action="{% url 'comment' object.id %}" method='post'>
+    <div>
+      <small>Comment:</small>
+    </div>
     {% csrf_token %}
-    <textarea name="comment" rows="4" cols="64">Leave a comment!</textarea>
+    <textarea name="comment" rows="4" cols="64"></textarea>
     <br>
     <div class='mb-4'>
       <input type="submit" value="Comment">
