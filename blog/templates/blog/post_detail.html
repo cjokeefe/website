@@ -6,7 +6,7 @@
   <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
   <div class="media-body">
     <div class="article-metadata">
-      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ object.author }}</a>
+      <a class="mr-2" href="{% url 'user-posts' object.author.username %}">{{ object.author }}</a>
       <small class="text-muted">{{ object.date_posted|date:"l, M j, Y" }}</small>
       {% if object.author == user %}
       <div>
@@ -67,7 +67,7 @@
   <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ comment.author }}</a>
+        <a class="mr-2" href="{% url 'user-posts' comment.author.username %}">{{ comment.author }}</a>
         <small class="text-muted">{{ comment.date_posted|date:"m/d/y" }} at {{ comment.date_posted|date:"g:i a" }}</small>
         {% if object.author == user or comment.author == user %}
           <div>
