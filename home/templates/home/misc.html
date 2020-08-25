@@ -1,0 +1,26 @@
+{% extends "home/base.html" %}
+{% block content %}
+
+<div class="col-md-8">
+
+	<h1 class="mb-3">Miscellaneous</h1>
+
+	<article class="media content-section">
+		<div class="media-body">
+			<h2 class="article-title mb-2">Random Color Gradient Generator</h2>
+			<p class="article-content">
+				<a href="{% url 'home-misc-gradient' %}">Click here</a>
+			</p>
+		</div>
+	</article>
+
+</div>
+
+
+<style>
+	#miscpage {
+		color: #fff;
+	}
+</style>
+
+{% endblock content %}
