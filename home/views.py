@@ -12,3 +12,9 @@ def about(request):
 
 def projects(request):
 	return render(request, 'home/projects.html')
+
+def misc(request):
+	return render(request, 'home/misc.html')
+
+def gradient(request):
+	return render(request, 'home/gradientGen.html')
